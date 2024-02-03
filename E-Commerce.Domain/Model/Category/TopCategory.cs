@@ -25,7 +25,7 @@ namespace E_Commerce.Domain.Model.Category
 
         public static TopCategory Create(string Name)
         {
-            
+            return new(TopCategoryId.CreateUnique(),Name);
         }
 
 

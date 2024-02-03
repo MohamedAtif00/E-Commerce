@@ -14,8 +14,7 @@ namespace E_Commerce.Domain.Model.Product.Entity
         public string _imageUrl { get; private set; }
         public string _title { get; private set; }
 
-        public Product product { get; private set; }
-        public ProductImage(ProductImageId id, ProductId productId,string imageUrl, string title) : base(id)
+        private ProductImage(ProductImageId id, ProductId productId,string imageUrl, string title) : base(id)
         {
             _productId = productId;
             _imageUrl = imageUrl;

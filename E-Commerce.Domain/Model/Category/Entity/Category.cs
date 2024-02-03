@@ -17,6 +17,7 @@ namespace E_Commerce.Domain.Model.Category.Entity
         public TopCategoryId TopCategoryId { get; set; }
 
         public IReadOnlyCollection<SubCategoryId> subCategoryIds { get { return _subCategoryIds; } }
+        public TopCategory _topCategory { get;private set; }
         // Constructor
         public Category(CategoryId id, string name, string description, TopCategoryId topCategoryId) : base(id)
         {
