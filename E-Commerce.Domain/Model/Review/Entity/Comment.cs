@@ -1,4 +1,4 @@
-﻿using E_Commerce.Domain.Common;
+﻿using E_Commerce.Domain.Common.Abstract;
 using E_Commerce.Domain.Model.Review.ValueObject;
 using System;
 using System.Collections.Generic;

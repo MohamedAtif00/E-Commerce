@@ -1,6 +1,7 @@
-﻿using E_Commerce.Domain.Common;
+﻿using E_Commerce.Domain.Common.Abstract;
 using E_Commerce.Domain.Model.Product.Entity;
 using E_Commerce.Domain.Model.Product.ValueObject;
+using E_Commerce.Domain.Model.Review;
 using E_Commerce.Domain.Model.SubCategory.ValueObject;
 using System;
 using System.Collections.Generic;
@@ -10,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace E_Commerce.Domain.Model.Product
 {
-    internal class Product : AggregateRoot<ProductId>
+    public class Product : AggregateRoot<ProductId>
     {
         public readonly List<ProductImage>? _productImages = new(); 
 
@@ -21,7 +22,7 @@ namespace E_Commerce.Domain.Model.Product
         public SubCategoryId _subCategoryId { get; private set; }
 
         private IReadOnlyCollection<ProductImage>? ProductImages { get { return _productImages; } }
-        public TotalReviews _totalReviews { get; private set; }
+        public TotalReviews? _totalReviews { get; private set; }
         public Product(ProductId id,
                        SubCategoryId subCategoryId,
                        string name,
@@ -59,6 +60,14 @@ namespace E_Commerce.Domain.Model.Product
         public void AddImage(string url,string title)
         {
             _productImages?.Add(ProductImage.Create(Id,url,title));
+        }
+
+        public void MakeTotalReviews(List<Review.Review> reviews)
+        {
+            var sumOfRating = reviews.Sum(x => x._rating.Value);
+            var averageRating = sumOfRating / reviews.Count;
+
+            _totalReviews  = TotalReviews.Create(averageRating);
         }
 
 

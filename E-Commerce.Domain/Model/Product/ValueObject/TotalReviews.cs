@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace E_Commerce.Domain.Model.Product.ValueObject
 {
-    internal class TotalReviews : Common.ValueObject
+    public class TotalReviews : Common.Abstract.ValueObject
     {
         public decimal Value { get; private set; }
 
@@ -15,9 +15,14 @@ namespace E_Commerce.Domain.Model.Product.ValueObject
             Value = value;
         }
 
+        public static TotalReviews Create(decimal value)
+        {
+            return new(value);
+        }
+
         public override IEnumerable<object> GetEqualityComponents()
         {
-            throw new NotImplementedException();
+            yield return Value;
         }
     }
 }

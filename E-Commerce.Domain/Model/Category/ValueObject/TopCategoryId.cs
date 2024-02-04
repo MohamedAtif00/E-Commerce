@@ -1,6 +1,6 @@
 ﻿namespace E_Commerce.Domain.Model.Category.ValueObject
 {
-    internal class TopCategoryId : Common.ValueObject
+    public class TopCategoryId : Common.Abstract.ValueObject
     {
         public Guid Value { get;private set; }
 

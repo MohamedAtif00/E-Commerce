@@ -2,7 +2,7 @@
 
 namespace E_Commerce.Domain.Model.SubCategory.ValueObject
 {
-    internal class SubCategoryId : Common.ValueObject
+    public class SubCategoryId : Common.Abstract.ValueObject
     {
         public Guid value { get; set; }
 
@@ -14,6 +14,11 @@ namespace E_Commerce.Domain.Model.SubCategory.ValueObject
         public static SubCategoryId CreateUnique()
         {
             return new(Guid.NewGuid());
+        }
+
+        public static SubCategoryId Create(Guid value)
+        {
+            return new SubCategoryId(value);
         }
 
         public override IEnumerable<object> GetEqualityComponents()

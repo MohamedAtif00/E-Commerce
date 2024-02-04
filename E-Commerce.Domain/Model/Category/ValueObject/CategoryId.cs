@@ -1,8 +1,6 @@
-﻿using E_Commerce.Domain.Common;
-
-namespace E_Commerce.Domain.Model.Category.ValueObject
+﻿namespace E_Commerce.Domain.Model.Category.ValueObject
 {
-    internal class CategoryId : Common.ValueObject
+    public class CategoryId : Common.Abstract.ValueObject
     {
         public Guid value { get; set; }
 

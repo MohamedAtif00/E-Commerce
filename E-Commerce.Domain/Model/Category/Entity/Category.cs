@@ -1,4 +1,4 @@
-﻿using E_Commerce.Domain.Common;
+﻿using E_Commerce.Domain.Common.Abstract;
 using E_Commerce.Domain.Model.Category.ValueObject;
 using E_Commerce.Domain.Model.SubCategory.ValueObject;
 using System;
@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace E_Commerce.Domain.Model.Category.Entity
 {
-    internal class Category : Entity<CategoryId>
+    public class Category : Entity<CategoryId>
     {
         public readonly List<SubCategoryId> _subCategoryIds = new();
         public string Name { get;private set; }
@@ -43,6 +43,8 @@ namespace E_Commerce.Domain.Model.Category.Entity
             this.Name = name;
             this.Description = description;
         }
+
+        
 
         public void AddSubCategory(SubCategoryId subCategoryId)
         { 

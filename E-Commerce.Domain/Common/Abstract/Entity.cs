@@ -1,11 +1,12 @@
-﻿
+﻿using E_Commerce.Domain.Common.Interface;
+using E_Commerce.Domain.Model.Category.Entity;
 
-namespace E_Commerce.Domain.Common
+namespace E_Commerce.Domain.Common.Abstract
 {
     public abstract class Entity<TId> : IEquatable<Entity<TId>>
         where TId : notnull
     {
-        public TId Id { get; protected set; }
+        public TId Id { get; protected init; }
 
         protected Entity(TId id)
         {
@@ -14,7 +15,12 @@ namespace E_Commerce.Domain.Common
 
         public override bool Equals(object? obj)
         {
-            return obj is Entity<TId> && Id.Equals(((Entity<TId>)obj).Id);
+            //return obj is Entity<TId> && Id.Equals(((Entity<TId>)obj).Id);
+            if (obj == null || GetType() != obj.GetType())
+                return false;
+
+            Category otherCategory = (Category)obj;
+            return Id.Equals(otherCategory.Id);
         }
 
         public override int GetHashCode()
@@ -37,6 +43,13 @@ namespace E_Commerce.Domain.Common
             return !Equals(left, right);
         }
 
+        internal void CheckRule(IBusinessRule rule)
+        {
+            if (rule.isBroken())
+            {
+                throw new BusinessRuleValidationException(rule);
+            }
+        }
 
     }
 }

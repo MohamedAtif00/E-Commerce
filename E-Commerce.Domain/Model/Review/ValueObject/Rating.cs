@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace E_Commerce.Domain.Model.Review.ValueObject
 {
-    public class Rating : Common.ValueObject
+    public sealed class Rating : Common.Abstract.ValueObject
     {
         public static Rating ZeroStar => new Rating(0m);
         public static Rating HalfStar => new Rating(0.5m);

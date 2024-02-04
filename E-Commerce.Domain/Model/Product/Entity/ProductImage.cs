@@ -1,4 +1,4 @@
-﻿using E_Commerce.Domain.Common;
+﻿using E_Commerce.Domain.Common.Abstract;
 using E_Commerce.Domain.Model.Product.ValueObject;
 using System;
 using System.Collections.Generic;
@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace E_Commerce.Domain.Model.Product.Entity
 {
-    internal class ProductImage : Entity<ProductImageId>
+    public class ProductImage : Entity<ProductImageId>
     {
         public ProductId _productId;
         public string _imageUrl { get; private set; }

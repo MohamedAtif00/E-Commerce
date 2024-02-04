@@ -1,6 +1,6 @@
 ﻿namespace E_Commerce.Domain.Model.Product.ValueObject
 {
-    internal class ProductImageId: Common.ValueObject
+    public class ProductImageId: Common.Abstract.ValueObject
     {
         public Guid value { get; set; }
 

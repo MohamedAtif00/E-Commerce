@@ -2,7 +2,7 @@
 
 namespace E_Commerce.Domain.Model.Review.ValueObject
 {
-    public class ReviewId: Common.ValueObject
+    public sealed class ReviewId: Common.Abstract.ValueObject
     {
         public Guid value { get; set; }
 

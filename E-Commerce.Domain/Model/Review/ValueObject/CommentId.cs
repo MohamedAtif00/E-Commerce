@@ -1,6 +1,6 @@
 ﻿namespace E_Commerce.Domain.Model.Review.ValueObject
 {
-    public class CommentId : Common.ValueObject
+    public sealed class CommentId : Common.Abstract.ValueObject
     {
         public Guid value { get; set; }
 

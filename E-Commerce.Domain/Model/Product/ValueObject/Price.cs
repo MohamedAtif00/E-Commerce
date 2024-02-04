@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace E_Commerce.Domain.Model.Product.ValueObject
 {
-    internal class Price : Common.ValueObject
+    public class Price : Common.Abstract.ValueObject
     {
         public decimal value { get; private set; }
         public Currency currency { get; private set; }
@@ -16,6 +16,12 @@ namespace E_Commerce.Domain.Model.Product.ValueObject
             this.value = value;
             this.currency = currency;
         }
+
+        public static Price Create(decimal value,Currency currency)
+        {
+            return new(value,currency);
+        }
+
         public override IEnumerable<object> GetEqualityComponents()
         {
             yield return value;
